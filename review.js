@@ -3,7 +3,6 @@
 // asks an AI model (via Groq, which is free) to review them, and posts
 // the result as a comment on the pull request.
 
-// test change 3
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const REPO = process.env.REPO;         // e.g. "yourname/your-repo"
@@ -106,3 +105,23 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
+// ----------------------------------------------------------------
+// DEMO CODE BELOW — intentionally contains common beginner mistakes
+// so the AI reviewer has real issues to catch and demonstrate on.
+// Not used anywhere above; safe to remove later.
+// ----------------------------------------------------------------
+
+const DB_PASSWORD = "admin123"; // hardcoded password — bad practice
+
+function getUserName(user) {
+  return user.name.toUpperCase(); // will crash if user or user.name is undefined
+}
+
+function riskyOperation() {
+  try {
+    doSomething();
+  } catch (e) {
+    // empty catch block — silently swallows errors
+  }
+}
