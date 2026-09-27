@@ -67,7 +67,7 @@ ${diff}`;
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "llama-3.1-8b-instant",
+      model: "openai/gpt-oss-120b",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.3,
     }),
@@ -105,3 +105,23 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
+// ----------------------------------------------------------------
+// DEMO CODE BELOW — intentionally contains common beginner mistakes
+// so the AI reviewer has real issues to catch and demonstrate on.
+// Not used anywhere above; safe to remove later.
+// ----------------------------------------------------------------
+
+const DB_PASSWORD = "admin123"; // hardcoded password — bad practice
+
+function getUserName(user) {
+  return user.name.toUpperCase(); // will crash if user or user.name is undefined
+}
+
+function riskyOperation() {
+  try {
+    doSomething();
+  } catch (e) {
+    // empty catch block — silently swallows errors
+  }
+}
